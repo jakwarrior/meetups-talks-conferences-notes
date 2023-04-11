@@ -1,0 +1,63 @@
+= Devoxx France 2023
+Sébastien Crabier
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 2
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+== MERCREDI
+
+Programme du mercredi : https://cfp.devoxx.fr/2023/byday/wed
+
+=== Présentation du salon
+
+* https://www.devoxx.fr/, du 12 au 14/04/2022
+
+=== 09h30 - 12h30 : Rendons le DDD aux devs
+
+==== Abstract
+
+Bien qu’étant proche de souffler ses 20 bougies, et malgré de nombreuses tentatives de vulgarisation, Domain-Driven Design (DDD) reste un sujet sur lequel il est difficile de se sentir à l'aise quand on est développeur ou développeuse, et qui semble trop souvent réservé à une élite d'architectes et aux cercles de pouvoir d'une direction informatique. Pourtant, c'est bien dans le rapport direct au code que DDD prend tout son sens ! Dans cette université, nous proposons quelques pratiques précises de code pour vous aider à exprimer davantage de couleur métier dans votre code. Pas à pas, à partir d'une base de code existante et concrète, vous découvrirez comment une série de refactorings simples permet de faire émerger le raisonnement métier au cœur de DDD, et vous serez surpris de pouvoir dire que vous avez enfin vraiment compris et pratiqué DDD !
+
+===== Speakers 
+
+Dorra Bartaguiz
+
+Dorra est VP Tech chez Arolla, co-auteure du livre Software Craft (édition Dunod), rédactrice en chef du numéro spécial 100% féminin chez Programmez! (245 Janvier 2022) Elle est passionnée par le développement et les bonnes pratiques. Elle partage son savoir-faire en publiant des articles et en animant des conférences et meetups. Elle a aussi enseigné dans une école d'ingénieurs à Paris pendant des années.
+
+Arnaud Thiefaine
+
+Arnaud est développeur, coach craft et formateur chez Arolla. Passionné par la transmission des bonnes pratiques, il est également co-auteur du livre "Software Craft : TDD, Clean Code et autres pratiques essentielles" aux éditions Dunod et anime régulièrement des meetups et BBL autour du Craft.
+
+==== Notes
+
