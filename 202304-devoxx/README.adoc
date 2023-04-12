@@ -85,7 +85,7 @@ Rapprocher les variables le plus près possible de leur utilisation, pour facili
 
 Pattern sandwich = séparation du métier et de la technique. Métier et technique sont souvent entremélé, comme dans un sandwich => se diriger vers le burger, avec le métier au centre (comme le steak), entouré par les buns qui représentent la technique (entrées et sorties qui encadrent la partie métier). La partie métier est ainsi plus facilement compréhensible, et la technique n'est là que pour supporter la partie métier. 
 
-Bounded Context : identifier les différentes parties métiers à isoler
+Identification des Bounded Context : identifier les différentes parties métiers à isoler
 => à faire en workshop avec le métier, PO (pas uniquement les devs). Cela permet d'identifier les différents domaines métiers. Asser compliquer à mettre en place et cher (tout le monde doit être présent en même temps).
 
 Exemple de Bounded Context : 
@@ -95,6 +95,41 @@ image::https://martinfowler.com/bliki/images/boundedContext/sketch.png[alt]
 Tips pour identifier les différentes parties métier :
 
 image::PXL_20230412_084501113.jpg[alt]
+
+Les 3 complexités du logiciel :
+
+image::PXL_20230412_091944776.jpg[alt]
+
+L'architecture hexagonale permet d'isoler le métier de la technique pour supprimer la complexité accidentelle et réduire la complexité obligatoire.
+L’architecture hexagonale s’appuie sur trois principes et techniques :
+
+* Séparer explicitement User-Side, Business Logic et Server-Side
+* Les dépendances vont vers la Business Logic
+* On isole les frontières par des Ports et Adapters
+
+image::PXL_20230412_092215930.jpg[alt]
+
+image::https://blog.octo.com/wp-content/uploads/2020/06/archi_hexa_00-3.png[alt]
+
+image::https://blog.octo.com/wp-content/uploads/2020/06/archi_hexa_06.png[alt]
+
+Les adapteurs adaptent l'extérieur (BDD, etc...) au domaine. Le domaine est isolé donc facilement testable. Il y a juste besoin de mocker la partie infra.
+
+image::PXL_20230412_094023160.jpg[alt]
+
+image::PXL_20230412_094729189.jpg[alt]
+
+image::PXL_20230412_095738225.jpg[alt]
+
+image::PXL_20230412_095826763.jpg[alt]
+
+image::PXL_20230412_100516013.jpg[alt]
+
+image::PXL_20230412_100820488.jpg[alt]
+
+image::PXL_20230412_102030850.jpg[alt]
+
+image::PXL_20230412_102216209.jpg[alt]
 
 === 13h30 - 16h30 : Automatisez vos tests utilisateurs avec Cypress
 
@@ -119,3 +154,109 @@ _Anthony Pena_
 Codeur et blogueur le jour et dévoreur de manga la nuit, vous me verrez souvent parler de Java, JavaScript, Typescript, Rust ou de test, parfois un peu (beaucoup) de jeux-vidéos ou de bricolage de console.
 
 ==== Notes
+
+Atelier hands-on, présentation des différentes fonctionnalités de Cypress suivies d'exercices.
+
+Les slides :
+https://sfeir-open-source.github.io/sfeir-school-cypress/#/
+
+Le dépôt GitHub des exercices :
+https://github.com/sfeir-open-source/sfeir-school-cypress
+
+=== 17h00 - 17h30 : NodeJS : patterns et outils pour partir en production sereinement
+
+==== Abstract
+
+Depuis 2009, NodeJS a beaucoup évolué et est devenu une solution particulièrement populaire pour développer des BFF (Backend For Frontend).
+
+Seulement voilà, malgré tous les progrès qui ont été faits, certaines API JS comme les promesses (avec ou sans async/await) apportent une fausse illusion de simplicité. Développer une application NodeJS comporte encore pas mal de pièges.
+
+Lors de cette session, je vous propose de passer en revue les pièges les plus courants, sources de gros plantages en production. Je vous présenterai aussi quelques outils pour éviter les surprises, mieux comprendre ce qui se passe sous le capot, écrire des tests qui permettent d’être vraiment confiants et enfin développer des applications réellement résistantes aux pannes.
+
+==== Speakers
+
+_Alexandre Victoor_
+
+Après plusieurs années à construire des applications pour les salles de marchés d'une grande banque française, je suis aujourd'hui CTO de Comet Meetings.
+Passionné par le code, que ce soit en Java, en C# ou en JS, je suis fan de tout ce qui tourne autour de l'agilité et tout particulièrement du craftsmanship.
+A mes heures perdues je contribue à des projets open source, le dernier en date étant HdrHistogramJS, un portage en TypeScript de la librairie Java HdrHistogram de Gil Tene.
+
+==== Notes
+
+Plusieurs centaines de paramètres pour la commande node.
+
+4Go de RAM maximum utilisée par défaut par node 18 => penser à limiter la taille max utilisée pour une application en prod qui utilise node.js. Une dizaine de threads utilisés par ailleurs. 
+
+Piscina => permet de faire des pool de thread en node.
+
+AutoCannon => tester la montée en charge de l'application.
+
+NodeClinic (Clinic.js) => équivalent de visualVM pour node.
+
+Express permet de construire des applications back-end basé sur node.
+Supertest permet de faire des tests avec Express.
+Pas de promesses dans Express. Il faut uitliser "express-promise-router"
+
+Zod permet de définir un schéma pour valider des données qui viennent d'un service externe.
+
+Pattern circuit-breaker pour gérer un trop grand nombre d'erreur. Utiliser la librairie cockatiel pour faire des circuit-breaker avec node.
+
+Bulhead : pour éviter que le serveur tombe sous la charge. Cockatiel peut aussi être utilisé dans ce cas.
+
+image::PXL_20230412_152838792.jpg[alt]
+
+
+=== 17h45 - 18h15 : Résoudre AdventOfCode avec Github Copilot et OpenAI ChatGTP
+
+==== Abstract
+
+Chaque décembre, c'est pas des chocolats, mais des problèmes algorithmiques via adventofcode.
+Cette année, j'ai commencé avec Github copilot de branché, et j'ai eu l'impression de tricher. J'ai ensuite testé OpenAI ChatGPT:
+
+* copie-collé l'énoncé texte
+* attendre 5 secondes
+* copié collé le programme généré
+* faire tourner le programme
+* Job DONE!
+
+Je vous propose de voir en live ce qu'on arrive à faire avec ces outils, notamment face à ce genre de puzzles, et aussi voir leurs limites.
+Enfin, on verra si c'est vraiment tricher ou pas et comment ces outils changerons nos métiers de développeurs.
+
+==== Speakers
+
+_Benoît Lafontaine_
+
+Engineering Director à Doctolib, ex directeur technique OCTO Technology. Développe sur son temps libre plein de choses inutiles. Cherche toujours à trouver comment aller plus vite en faisant mieux (est passé du coup du Java à Ruby:) ). Persuadé que « team => product » et que le code est un art.
+
+==== Notes
+
+Github Copilot est un outil très puissant, aide à l'écriture du code en se basant sur des exemples existant sur Github.
+
+ChatGPT permet de résoudre les problèmes simples juste en copiant l'énoncé
+. Dès que les probèmes sont un peu plus complexes, ChatGPT est rapidement perdu, et il faut décrire précisément les problèmes, travailler par étape et le guider pour trouver la solution. ChatGPT ne comprends pas ce qu'il fait. Sur les problèmes vraiment complexes, il est perdu et n'arrive à rien faire.
+
+ChatGPT : très créatif et explique ce qu'il fait, mais il pense qu'il a toujours raison même quand il a tort.
+
+Github Copilot : bon programmeur et intégré dans l'IDE, mais il manque de recul sur ce qu'il fait, et copie trop sur ses voisins (récupère du code de GitHub)
+
+En concluison, ChatGPT est utile pour trouver des idées, Copilot pour coder, mais il faut toujours vérifier les résultats, on ne peut pas faire une confiance aveugle dans ces outils.
+
+=== 13h30 - 16h30 : 
+
+==== Abstract
+
+==== Speakers
+
+==== Notes
+
+===== A rattraper en replay
+
+* Docker Compose 101 (++)
+* Kubernetes, dépassionné et pour les ultra débutants (+++)
+* Comprendre et utiliser les modèles de langage d'IA (++)
+* Jakarta en 2023, Quelle est la situation ? (+)
+* Finis les 'git commit -m "fix pipeline #42"' grâce à Dagger (+)
+* Playwright : l'outil qui va révolutionner les tests end-to-end (++)
+* Redis: du cache à la time series! (+)
+* Savez-vous vraiment comment fonctionne git ? (++)
+
