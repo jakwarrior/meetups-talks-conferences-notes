@@ -51,13 +51,71 @@ Bien qu’étant proche de souffler ses 20 bougies, et malgré de nombreuses ten
 
 ===== Speakers 
 
-Dorra Bartaguiz
+_Dorra Bartaguiz_
 
 Dorra est VP Tech chez Arolla, co-auteure du livre Software Craft (édition Dunod), rédactrice en chef du numéro spécial 100% féminin chez Programmez! (245 Janvier 2022) Elle est passionnée par le développement et les bonnes pratiques. Elle partage son savoir-faire en publiant des articles et en animant des conférences et meetups. Elle a aussi enseigné dans une école d'ingénieurs à Paris pendant des années.
 
-Arnaud Thiefaine
+_Arnaud Thiefaine_
 
 Arnaud est développeur, coach craft et formateur chez Arolla. Passionné par la transmission des bonnes pratiques, il est également co-auteur du livre "Software Craft : TDD, Clean Code et autres pratiques essentielles" aux éditions Dunod et anime régulièrement des meetups et BBL autour du Craft.
 
 ==== Notes
 
+Le DDD pour « Domain-Driven Design » est appelé en français « Conception pilotée par le domaine ».
+(À la place de « pilotée par le domaine », on pourrait utiliser orientée, motivée, justifiée…)
+La conception de notre application toute entière est définie sur le design du domaine.
+En quelques mots, il s’agit de représenter le métier directement dans le code. Plutôt que de coder le métier.
+DDD, c’est une philosophie de conception, on se base sur le métier pour assembler la solution que l’on apporte au business, autrement dit notre code.
+Ainsi, la structure, le nom des classes, des champs, les actions des fonctions : tout ceci doit refléter le métier.
+Dans le meilleur des mondes, une personne du métier doit presque être capable de comprendre l’intention du code qu’elle est en train de regarder.
+Mais le Domain-Driven Design, c’est avant tout la compréhension du métier par l’ensemble de l’équipe.
+
+Le DDD existe depuis 20 ans, ce n'est pas quelque chose de nouveau.
+Beaucoup le trouve difficile à appliquer. 
+
+Refactoring de code : partir d'une gold master avec plein de scénarios de test pour ne rien casser, puis faire uniquement des baby steps. A chaque baby steps, rejouer les tests qui doivent toujours passer. Ne pas avoir de tests KO pendant le refactoring, même si on doit parfois complexier le code pour le rendre plus simple plus tard.
+
+image::PXL_20230412_081024919.jpg[alt]
+
+Avec le DDD, le code doit être le plus facilement compréhensible, même pour quelqu'un qui ne fait pas forcément de code. 
+
+Supprimer régulièrement le code inutile, même les commentaires qui ne servent à rien. Est-ce qu'on a vraiment besoin de commentaire à cet endroit précis ? Il vaut mieux renommer une variable ou une méthode, ou d'extraire un bout de code dans une méthode pour rendre l'ensemble plus compréhensible. Supprimer également les logs ou sorties console de debug pour cleaner le code (obvious).
+
+Rapprocher les variables le plus près possible de leur utilisation, pour facilier le refactoring par la suite, comme l'extraction dans une méthode par exemple.
+
+Pattern sandwich = séparation du métier et de la technique. Métier et technique sont souvent entremélé, comme dans un sandwich => se diriger vers le burger, avec le métier au centre (comme le steak), entouré par les buns qui représentent la technique (entrées et sorties qui encadrent la partie métier). La partie métier est ainsi plus facilement compréhensible, et la technique n'est là que pour supporter la partie métier. 
+
+Bounded Context : identifier les différentes parties métiers à isoler
+=> à faire en workshop avec le métier, PO (pas uniquement les devs). Cela permet d'identifier les différents domaines métiers. Asser compliquer à mettre en place et cher (tout le monde doit être présent en même temps).
+
+Exemple de Bounded Context : 
+
+image::https://martinfowler.com/bliki/images/boundedContext/sketch.png[alt]
+
+Tips pour identifier les différentes parties métier :
+
+image::PXL_20230412_084501113.jpg[alt]
+
+=== 13h30 - 16h30 : Automatisez vos tests utilisateurs avec Cypress
+
+==== Abstract
+
+Poussez la porte pour venir découvrir avec nous un outil de testing end-to-end pensé par et pour les développeurs.
+
+Aujourd’hui plesbicité par la communauté, Cypress est la promesse tenue d’une solution pour en finir avec les tests e2e longs et lents, allant jusqu’à proposer aujourd’hui une fonctionnalité de component testing.
+
+Pendant cet atelier, nous explorerons ensemble une application web grâce à Cypress au travers de différents parcours utilisateurs pour découvrir les possibilités offertes par ce framework, ainsi que ses limitations.
+
+===== Speakers 
+
+_Gérôme Grignon_
+
+Développeur Web chez SFEIR.
+Consommateur de projets open-source le jour, contributeur la nuit.
+Head of OSPO @SFEIR Stackblitz Community Advocate
+
+_Anthony Pena_
+
+Codeur et blogueur le jour et dévoreur de manga la nuit, vous me verrez souvent parler de Java, JavaScript, Typescript, Rust ou de test, parfois un peu (beaucoup) de jeux-vidéos ou de bricolage de console.
+
+==== Notes
