@@ -35,13 +35,13 @@ endif::[]
 
 toc::[]
 
+== Présentation du salon
+
+* https://www.devoxx.fr/, du 12 au 14/04/2022
+
 == MERCREDI
 
 Programme du mercredi : https://cfp.devoxx.fr/2023/byday/wed
-
-=== Présentation du salon
-
-* https://www.devoxx.fr/, du 12 au 14/04/2022
 
 === 09h30 - 12h30 : Rendons le DDD aux devs
 
@@ -191,11 +191,11 @@ Piscina => permet de faire des pool de thread en node.
 
 AutoCannon => tester la montée en charge de l'application.
 
-NodeClinic (Clinic.js) => équivalent de visualVM pour node.
+NodeClinic (Clinic.js) => équivalent de VisualVM pour Node.
 
 Express permet de construire des applications back-end basé sur node.
 Supertest permet de faire des tests avec Express.
-Pas de promesses dans Express. Il faut uitliser "express-promise-router"
+Pas de promesses dans Express. Il faut utiliser "express-promise-router"
 
 Zod permet de définir un schéma pour valider des données qui viennent d'un service externe.
 
@@ -233,15 +233,323 @@ Engineering Director à Doctolib, ex directeur technique OCTO Technology. Dével
 Github Copilot est un outil très puissant, aide à l'écriture du code en se basant sur des exemples existant sur Github.
 
 ChatGPT permet de résoudre les problèmes simples juste en copiant l'énoncé
-. Dès que les probèmes sont un peu plus complexes, ChatGPT est rapidement perdu, et il faut décrire précisément les problèmes, travailler par étape et le guider pour trouver la solution. ChatGPT ne comprends pas ce qu'il fait. Sur les problèmes vraiment complexes, il est perdu et n'arrive à rien faire.
+. Dès que les problèmes sont un peu plus complexes, ChatGPT est rapidement perdu, et il faut décrire précisément les problèmes, travailler par étape et le guider pour trouver la solution. ChatGPT ne comprends pas ce qu'il fait. Sur les problèmes vraiment complexes, il est perdu et n'arrive à rien faire.
 
 ChatGPT : très créatif et explique ce qu'il fait, mais il pense qu'il a toujours raison même quand il a tort.
 
 Github Copilot : bon programmeur et intégré dans l'IDE, mais il manque de recul sur ce qu'il fait, et copie trop sur ses voisins (récupère du code de GitHub)
 
-En concluison, ChatGPT est utile pour trouver des idées, Copilot pour coder, mais il faut toujours vérifier les résultats, on ne peut pas faire une confiance aveugle dans ces outils.
+En conclusion, ChatGPT est utile pour trouver des idées, Copilot pour coder, mais il faut toujours vérifier les résultats, on ne peut pas faire une confiance aveugle dans ces outils.
 
-=== 13h30 - 16h30 : 
+== JEUDI
+
+Programme du jeudi : https://cfp.devoxx.fr/2023/byday/thu
+
+=== 10h45 - 11h30 : CRAC vs GraalVM
+
+==== Abstract
+
+Dans les cas d'usages modernes (Kubernetes, Serverless), tout le monde sait que le point noir de la JVM est son démarrage.
+
+Depuis quelques années, GraalVM s'impose comme remède permettant ainsi un démarrage rapide via une compilation native. Cela apporte néanmoins certaines contraintes.
+
+Une nouvelle solution apparait dans le paysage de la JVM. C'est CRaC pour Coordinated Restore at Checkpoint. Regardons ensemble comment cela fonctionne et les avantages.
+
+==== Speakers
+
+_Lilian BENOIT_
+
+Lilian est Tech Leader dans une ESN Bordelaise. il est passionné par l'informatique depuis bien plus longtemps. Il aime travailler sur sa plateforme préféré Java (Java SE et Jakarta EE), notamment sur sa distribution de prédilection : Debian.
+
+Il adore apprendre et partager ses connaissances. C'est comme cela qui s'est rapproché du BordeauxJUG dont il en est JUG Leader depuis 2016. L'objectif du Bordeaux JUG est de promouvoir Java à travers des soirées/conférences mensuelles autour de la plateforme Java.
+
+==== Notes
+
+Changement de paradigme :
+
+* Usage de micro-services
+* Diminution de l'usage des serveurs d'application
+* Approche stateless
+=> besoin de démarrage rapide
+
+Fonctionnement de la JVM :
+
+* Bytecode interprété
+* Code "préchauffe", nécessité de passer plusieurs fois dans une méthode pour l'optimiser.
+* Compilateur JIT
+
+Avec Java :
+Chargement de classes, prises en compte des annotations, initialisation du contexte applicatif de CDI, ce qui prend du temps mais grande flexibilité
+
+GraalVM :
+Exécutable natif et compilateur AOT
+
+Contraintes de GraalVM:
+
+* Réflexion et dynamiques : tout doit être connu au moment de la compilation, la réflexion ne fonctionne pas. 
+* Utilisation de Substrate VM pour remplacer la JVM
+* SerialGC comme Garbage Collector (le moins performant)
+* Optimisation à chaud (GraalVM Entreprise uniquement)
+* GC G1 à faible latence présent dans la version Entreprise
+
+CRaC : Coordinated Restore  at Checkpoint
+C'est un concurrent de GraalVM. Il est maintenu par OpenJDK.
+
+Checkpoint : fige l'état de la JVM "déjà chaude" au moment d'un checkpoint, puis plus tard possibilité de restaurer la JVM au moment de ce checkpoint
+
+2 méthodes à implémenter: beforeCheckpoint et afterCheckpoint.
+La JVM s'arrête au moment où on demande un checkpoint => faire attention de bien fermer les connexions/socket avant, et de tout rouvrir au moment du chargement du checkpoint.
+
+Les frameworks comme Springboot sont en train de s'adapter pour éviter au développeur de gérer ce genre de problème.
+
+=== 11h45 - 12h30 : Bien choisir sa base de données
+
+==== Abstract
+
+RDBMS ? Orienté colonnes ? Documents ? Timeseries ? Graphes ? Distribué ou non ? Pas facile de faire le bon choix lorsqu’on est perdu dans toutes ces notions. Dans ce talk, on est là pour t’aider à faire le meilleur choix de base de données pour ta prochaine application ! Comme la solution universelle n’existe pas, on va plutôt te présenter différents critères de choix, les pièges et antipatterns qu’il faut éviter, ainsi qu’une lecture analytique de chaque type de DB. On va notamment parler des grands types de bases de données, de transactions et de distribution de la donnée. En sortant, tu te poseras les bonnes questions pour choisir ta BDD et tu n’auras pas besoin de chercher à faire des jointures dans Elastic !
+
+==== Speakers
+
+_Sébastien Keller_
+
+S’il n’est pas en train de faire sa séance de bloc quasi-quotidienne, vous pourrez trouver Sébastien en train de répondre à des questions sur son diagramme d’archi ou de lire le code de Kafka Stream pour trouver le bon TaskAssignor.
+Après 11 ans, et quelques générations de juniors formées, Sébastien se décide enfin à partager son expérience à un public plus large.
+Côté métier, il a travaillé sur des codebases aussi variées que de l’assurance, des sites e-commerce et plus récemment, de la Big Data. Il pourra vous parler de toutes les mauvaises idées qu’il a croisé sur son chemin, mais aussi des bonnes !
+
+_Alexandre Budzko_
+
+Jeune developpeur fullstack, passionné par la tech et en particulier le free software
+
+==== Notes
+
+DBs relationnelles :
+
+Dbs orientées documents :MongoDb, CouchDB
+
+DBs search : algolia, ealsticsearch
+
+Axes de décision :
+Structure, dimensionnement, runtime
+
+Type de requête : recherche par identifiant, recherche par champ secondaire
+recherche par score
+
+Contraintes spécifiques,style géospatial
+
+=== 13h00 - 13h15 : Storybook, une vraie bonne idée ?
+
+==== Abstract
+
+Ça y est, vos designers ont enfin mis en place un design system complet pour assurer une maintenabilité, homogénéité et accessibilité des composants UI de votre interface. Mais comment s'assurer du respect de celui-ci et des bonnes pratiques front-end dans une équipe à l'appétence très fortement back-end ? Depuis 2 ans, notre équipe hésitait à utiliser Storybook, un outil front-end pour créer une UI propre et documentée isolée. Est-ce que la notoriété est justifiée ? Est-ce que Storybook correspondrait à une équipe réduite comme la nôtre ? Je partagerai nos réflexions, nos choix, l’histoire de l’intégration de Storybook au sein de notre équipe et vous découvrirez si oui ou non, nous l’avons déployé.
+
+==== Speakers
+
+_Sara Attallah_
+
+Développeuse depuis 5 ans, je suis actuellement en charge du Front-End chez JOLIMOI, en plein écosystème Vue JS. Après un parcours artistique et dans le cinéma documentaire, je me passionne pour les interfaces interactives au cours de la création d'un web documentaire. J'ai commencé ma carrière dans des studios de design interactifs et m'épanouis dans le web depuis.
+
+==== Notes
+
+Besoin d'un code réutilisable avec la documentation associée.
+Approche Design System choisie => catégoriser tous les composants graphiques pour en faire une bibliothèque réutilisable.
+
+image::PXL_20230413_110713126.jpg[alt]
+
+Storybook permet de faire un catalogue de composants et de leur différents états.
+Les différentes propriétés graphiques sont retrouvées et peuvent être modifiée à la volée pour tester le composant.
+Il existe une existe docs pour décrire dans un markdown la documentation du composant.
+Pas mal de maintenance à prévoir dès qu'un composant évolue. Nécessité de faire des composants isolés et une bonne organisation => en parallèle de la création d'un nouveau composant, il faut aussi faire la partie storybook et la maintenir.
+
+Retex très positif de la part du speaker sur l'outil.
+
+Exemple de Storybook de Doctolib :
+https://oxygen.doctolib.design/60b411768/p/77fd2d-doctolib-design-system
+
+Storybook peut être intéressant pour remplacer le sample Titan qui va devenir de plus en plus difficile à maintenir.
+
+=== 13h45 - 14h30 : Loi de Conway : lorsque les bonnes pratiques ne suffisent pas
+
+==== Abstract
+
+Avez-vous des APIs découpées d'une manière qui semble au final arbitraire et orthogonale au métier ? Que l'architecture décidée n'est jamais vraiment respectée ni réalisée ?
+
+Vos utilisateurs ont toujours du mal à récupérer les informations dont ils ont besoin, alors que vous avez mis le paquet sur le métier et l'expérience utilisateur ?
+
+N'avez-vous jamais remarqué, que bien vous suivez les bonnes pratiques, le logiciel qu'on construit s'écarte souvent de la vision produit, technique et parfois même des besoins de l'utilisateur ?
+
+Et si on vous disait que tout cela est lié, et qu'il existe une force qui a une influence certaine sur votre produit, votre expérience utilisateur, votre architecture et même la qualité de votre logiciel ?
+
+Venez découvrir la Loi de Conway ! Cette force méconnue qui a un pouvoir certain sur ce que vous construisez quel que soit votre métier. A travers des études scientifiques et des retours du terrain sur des exemples réels, nous verrons ses impacts sur les différents aspects du logiciel et nous apprendrons comment les apprivoiser.
+
+==== Speakers
+
+_Julien Topçu_
+
+Tech Coach chez Shodo, j'accompagne le développement de logiciels à forte valeur métier en usant de techniques issues du Domain-Driven Design, le tout propulsé en Xtreme Programming dans la philosophie Kanban #NoEstimates. Membre de la fondation OWASP, j'évangélise sur les techniques de sécurité applicative afin d'éviter de se faire hacker bien comme il faut.
+
+==== Notes
+
+La qualité du produit est liée à l'organisation de l'entreprise.
+Lien entre structure du système et l'organisation qui l'a produit.
+
+Règle de l'homomorphisme : la structure de l'organisation fait que le 2e système ne sera pas choisi, ni même imaginé par les équipes, chacun ayant déjà une manière de penser et d'intéragir entre elles. Pourquoi ajouter une nouvelle équipe à l'existant ?
+
+L'effort de communication n'est pas linéaire, l'effort de travail non plus (à revoir)
+
+Il faut limiter la communication et les intermédiaires pour faire une meilleur travail.
+
+Il faut rester flexible dans son organisation.
+
+Inverse Conway Maneuver : il faut casser les silos en entreprise pour améliorer la communication.
+
+BAPO
+Domaine Driven Design permet de résoudre les problèmes B et A
+B->A: définition des sous système.
+
+ContextMap
+PartnerShip
+
+DDD ne donne pas beaucoup de billes sur comment s'organiser.
+
+Team Topologies va traiter P -> O.
+Il ne faut pas surcharger le travail de l'équipe.
+
+Collaboration
+Réduire l'interaction entre les équipes pour qu'elles soient le plus autonome possible.
+
+=== 14h30 - 15h15 : Les nouveautés de Java 19 et 20
+
+==== Abstract
+
+Les versions 19 et 20 de Java, publiées en septembre et mars derniers, sont les 10eme et 11eme release en application du modèle de release tous les 6 mois.
+
+En attendant la publication de Java 21, la prochaine version LTS publiée en septembre de cette année, et pour en donner quelques aperçus, cette présentation brosse une revue détaillée des nouveautés introduites dans ces nouvelles versions non-LTS de Java, issues des projets Amber, Panama et Loom d’OpenJDK ainsi que des fonctionnalités non incluses dans des JEPs.
+
+==== Speakers
+
+_Jean-Michel Doudoux_
+
+Passionné par le développement de logiciels et par la veille technologique, je possède une longue expérience, en SSII/ESN et personnelle, dans l'écriture d'applications avec différents langages. Je suis actuellement Senior tech lead pour la société Sciam. Utilisant Java depuis sa version 1.0, j'aime partager ma passion pour cette plateforme et son écosystème notamment en me consacrant, depuis presque vingt années, à la rédaction de deux tutoriels, intitulés "Développons en Java", diffusés sous licence GNU FDL. Ce travail m'a permis d'être nommé Java Champion. Je suis également un des cofondateurs du Lorraine JUG.
+
+==== Notes
+
+Record Patterns en preview
+
+image::path[alt]
+
+Pattern matching for switch 
+
+Foreign Function & Memory API
+
+Vector API
+
+Virtual Threads avec Loom
+
+Structured Concurrency
+
+=== 13h45 - 16h30 : DevOps is Dead? Au fait, c’est quoi le DevOps? Et pourquoi faut-il le sécuriser?
+
+==== Abstract
+
+Après 14 ans de DevOps, il est temps pour nous de regarder ce qui font les forces et les faiblesses du mouvement DevOps. Il y cinq ans, nous avons écrit le livre “Liquid Software”. Nous étions sûrs qu’aujourd’hui la vision serait âgée et dépassée, mais elle est plus que jamais un facteur déterminant dans le succès d’une transformation digitale. Dans cette session, je parlerai du présent et du futur du DevOps dans notre industrie changeante, et comment votre entreprise peut bénéficier au maximum du mouvement DevOps.
+
+==== Speakers
+
+_Fred Simon_
+
+Fred est le cofondateur de JFrog, et l’un des architectes les plus respectés de la communauté des développeurs, avec plus de 20 ans d’expérience Java et Open Source. Avant JFrog, Fred a fondé AlphaCSP, où il dirigeait 5 branches dans le monde en tant que CTO et visionnaire. Fred a traversé les évolutions de technologies dans son rôle de programmateur, architecte, consultant, et speaker. Fred est titulaire d’un Masters in Computer Science de l’école Centrale de Lille.
+
+==== Notes
+
+Dans le Devops, l'idéal est pas d'intervention humaine entre le commit et la mise en production.
+Mais l'humain aime rester dans le "flow" pour se sentir important. Il faut travailler main dans la main avec les machines pour être plus performant.
+
+image::PXL_20230413_134745523.jpg[alt]
+
+La prochaine étape du Devops : uniquement des machines à partir du commit du développeur (code review, review des vulnérabilités, end-to-end testing, ...). Le speaker aimerait que la chaine de prod soient entièrement automatisée pour que la mise en prod soit la plus rapide possible. 
+
+Mettre à jour Edge device
+
+Bref, le devops n'est pas mort, et on gagnerait beaucoup de temps à automatiser le maximum d'étapes avant la mise en prod
+
+=== 16h45 - 17h30 : Auth et systèmes distribués: ne jetons pas le bébé avec l'eau du bain
+
+==== Abstract
+
+Depuis l'essor des architectures microservices, l'auth a bien évolué. Les solutions basées sur un serveur d'authorisation central sont certes simples à mettre en place, mais rendent les systèmes moins résilients. Si le serveur d'auth tombe, l'ensemble de la plateforme tombe. De l'autre côté du spectre, des systèmes à base de jetons au porteur (comme JWT) permettent de s'affranchir des contraintes d'un système centralisé. En revanche, de tels systèmes sont notoirement complexes à mettre en place et nécessitent une bonne dose d'expérience pour éviter les erreurs.
+
+Dans cette conférence nous vous présenterons:
+
+* comment choisir entre un système d'auth centralisé et un système distribué
+* un tour d'horizon des solutions possibles pour les jetons au porteur;
+* les différentes architectures d'auth possibles (passerelle d'auth, intégration directe, …);
+* les éléments indispensables à mettre en place dans un tel système (rafraichissement des tokens, révocation, rotation des clés, …);
+* la plateforme biscuit, construite autours de ces use cases.
+
+==== Speakers
+
+_Clément Delafargue_
+
+I'm a functional programmer, working on IAM matters at Outscale
+
+_Geoffroy Couprie_
+
+Geoffroy Couprie est consultant indépendant. Spécialiste en sécurité logicielle, il travaille à rendre le code plus sûr, et les outils cryptographiques plus utilisables. Il étudie plus particulièrement la sécurité des protocoles d'authentification et d'échange de messages.
+
+==== Notes
+
+Authentification sur les systèmes distribués.
+Possibilité de centraliser le système d'auth.
+
+Bearer tokens :
+JWT (commun mais peu être tricky)
+PASEO ()
+
+Bearer Tokens (fancy) :
+Macaroons
+Biscuit
+
+Ne pas oublier de mettre en place une architecture de révocation (très important !!) :
+* les tokens doivent être uniques
+* maintenir une liste des tokens émis (avec un id unique dans la liste)
+* les tokens doivent avoir une date d'expiration
+
+Système pour mitiger cette limitation :
+
+image::PXL_20230413_145843189.jpg[alt]
+
+Mettre en place un système de rotation de clé, et le faire régulièrement.
+
+Offline attenuation : si on a un jeton valide, on peut générer un nouveau token avec moins de droits, comme changer la date d'expiration.
+Utilisation de Biscuit pour cela : https://www.biscuitsec.org.
+Implémentation en JS, Java, Go, Rust...
+
+slide avant hot path à mettre
+Bonne architecture mais il faut être carré sur la révocation des clés.
+
+La librairie me semble assez intéressante, mais pas assez mature pour utiliser chez nous à mon avis.
+
+=== 17h45 - 18h15 : Dockerfile vs Jib vs Pack vs image native : quelle est la meilleure méthode de création d'image de conteneur
+
+==== Abstract
+
+Docker est l'outil standard pour créer et exécuter des conteneurs sur la plupart des plateformes. La façon traditionnelle pour construire l'image d'un conteneur est intégrée à l'outil Docker et utilise une séquence d'instructions spéciales, généralement dans un fichier nommé Dockerfile, pour compiler le code source et assembler les "layers" d'une image de conteneur.
+
+Mais Docker n'est pas la seule façon de construire les images des applications conteneurisées. Dans cette présentation, nous allons construire des images de conteneurs à l'aide de différentes méthodes, puis nous comparerons les constructeurs et évaluerons les images de conteneurs respectives : Nous examinerons différentes propriétés telles que la taille de l'image, le score d'efficacité, la sécurité, la facilité d'utilisation et la compatibilité des méthodes avec les langages de programmation. Mais aussi, nous allons démarrer les conteneurs pour effectuer plusieurs benchmarks. Tout cela afin de vous aider à déterminer quel est la meilleure approche pour vous !
+
+==== Speakers
+
+_Christian NADER_
+
+Senior software engineer at Decathlon, working on Digital Supply projects and Data Streaming solutions. Beforehand, I worked for the French government on projects like securing citizens' healthcare data and developing the french digital signature service. A scientist by training, I always apply the scientific method when solving IT problems. Interested in everything tech, development, design and architecture.
+
+==== Notes
+
+Images Distroless : ne contient que l'application et les dépendances runtime. Utilisation de Jib pour les images distroless. Image plus petite, surface d'attaque réduite, démarrage plus rapide, mais moins customisable qu'une image générée par un dockerfile.
+
+Cloud native buildpacks (CNB) : convertit le code source depuis n'importe quel langage vers un système de conteneur
+
+=== 15h30 - 16h15 : 
 
 ==== Abstract
 
@@ -259,4 +567,7 @@ En concluison, ChatGPT est utile pour trouver des idées, Copilot pour coder, ma
 * Playwright : l'outil qui va révolutionner les tests end-to-end (++)
 * Redis: du cache à la time series! (+)
 * Savez-vous vraiment comment fonctionne git ? (++)
+* Ah, tu peux faire ça en CSS maintenant ? (+)
+* GC: Comment dompter la bête et en faire votre meilleur allié (++)
 
+A regarder : Decathlon, Blablacar, cosium, Axa, Takima
