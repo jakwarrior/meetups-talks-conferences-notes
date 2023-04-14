@@ -549,13 +549,229 @@ Images Distroless : ne contient que l'application et les dépendances runtime. U
 
 Cloud native buildpacks (CNB) : convertit le code source depuis n'importe quel langage vers un système de conteneur
 
-=== 15h30 - 16h15 : 
+== VENDREDI
+
+Programme du vendredi : https://cfp.devoxx.fr/2023/byday/fri
+
+=== 10h45 - 11h30 : Clean as You Code your projects
 
 ==== Abstract
 
+On veut tous un code de qualité - “Clean Code”. Mais à mesure que notre code et nos équipes s'agrandissent, il peut être difficile de maintenir cette norme. Dans cette présentation, nous aborderons les bénéfices du “Clean Code” et comment vous concentrer sur ce point aidera votre organisation et vous même à prospérer. Nous approfondirons le concept de “Clean as You Code” et les outils qui garantissent un code adapté au développement et à la production.
+
 ==== Speakers
 
+_Nolwenn Cadic_
+
+Nolwenn fait partie de l’équipe SonarCloud où elle fait du développement Java. Elle a rejoint l’équipe il y a un an. Elle y cultive son goût du Clean Code et le met en pratique tous les jours. Avant l’aventure SonarSource, elle a travaillé 2 ans comme développeur full stack Java et React.
+
+_Marco Comi_
+
+Marco Comi est un Chef de Produit avec plus de 13 ans d'expérience dans l'industrie du logiciel. Il a commencé sa carrière comme ingénieur logiciel, où il a développé une profonde appréciation du Clean Code et de l'importance de soutenir les développeurs dans leur quête pour l'écrire. Il a ensuite travaillé comme Scrum Master, Product Owner et finalement a effectué la transition vers la gestion de produits. Il travaille chez SonarSource et supervise le développement de SonarLint depuis 2020.
+
 ==== Notes
+
+Clean code = code adapté à un but
+
+image::PXL_20230414_085300107.jpg[alt]
+
+Le clean code minimise l'effort et le cout d'entretien, réduit la friction pour les développeurs, augmente la longévité du logiciel et réduit les couts (x3) et réduit les risques opérationnels et de sécurité.
+
+Approche de Sonar : Clean as you Code
+
+A ne pas faire : repartir de 0, faire un gros refactoring. 
+
+Clean as you Code = régler le problème avant de réparer les conséquences. Basé sur le concept de nouveau code. Le nouveau code doit être du clean code. Cela permet de régler le problème avant les conséquences. Pas de réécriture donc ne bloque pas les évolutions. Chaque développeur est responsable du code qu'il écrit. Utilisé avec succès depuis des années chez Sonar.
+
+Une seule et simple règle : aucun nouveau code non clean Code déployé en production. Pour cela, on utilise des Quality Gate (ce qu'on fait déjà chez nous, donc rien de nouveau de ce côté là, mais leur Quality Gate est beaucoup plus stricte que la notre).
+
+Publicité pour SonarLint, SonarQube et SonarCloud. Dans la Quality Gate par défaut, Sonar demande 80% de couverture de tests, et utilise 90% de couverture en interne.
+
+En utilisant cette technique, le vieux code est réécrit progressivement et donc remplacé par du Clean Code au fur et à mesure. Ecrire du code propre, ça ne coute pas plus cher que d'écrire n'importe quoi.
+
+=== 11h45 - 12h30 : Avoir de l’impact en tant qu’Engineering Manager
+
+==== Abstract
+
+Après 5-10 ans passés à coder dans une équipe vient LA question : dois-je vraiment devenir Manager ? Cette question peut résonner avec une crise existentielle. Dois-je coder toute ma vie ? Je vais faire quoi en vrai en attendant la retraite à 127 ans ?
+
+Bon nombre d’organisations modernes mettent en place un double chemin de carrière. La première “Individual Contributor” permettant de s’épanouir et de grandir en tant que developp(eur | euse). L’autre est celle de l’“Engineering Management” permettant de s’épanouir et de grandir en tant que Manager (Engineering manager, Head of Engineering, VP, …).
+
+Cette seconde voie peut paraître obscure au premier abord, mais nous reviendrons sur ce rôle (aux côtés des product managers, des tech leaders etc …) et les différents challenges associés dans un contexte de forte croissance (ou non) et détaillerons les compétences à développer pour avoir de l’impact en tant que manager et grandir et faire grandir.
+
+Cette conférence est le complément manager de la conférence de 2022, sur la carrière de contributeur individuel - link:https://youtu.be/X5MYKj1C2qM[Développ(eur l euse) Senior avec 6 ans d’expérience, et après ?]
+
+==== Speakers
+
+_Dimitri BAELI_
+
+Member of the Tech staff at BackMarket working on the tech org and an internal startup to provide refurbished devices for entreprises. I also occasionally mentor CTO/CEO, while actively contributing to the FlowCon Conference & the Tech.Rocks Tech Leaders network. 20+ years IT and Product Leadership and Exec member at AramisAuto, LesFurets.com, eXoPlatform, setting up and running IT Teams based on Agile & Craftmanship principles. Based on team autonomy to work with Continuous Improvement of a high quality software.
+
+_Benoit Guillon_
+
+VP engineering at Malt since 2019 +20 years experience in tech Started engineering management at Talend 6 years ago in a hyper scaling context
+
+==== Notes
+
+Typical Product Team structure :
+1 Product Manager
+1 Engineering Manager
+X Team Members (Dev, QA, Design, Ops)
+
+image::PXL_20230414_095228263.jpg[alt]
+
+image::PXL_20230414_100053798.jpg[alt]
+
+image::PXL_20230414_101000349.jpg[alt]
+
+image::PXL_20230414_101329663.jpg[alt]
+
+image::PXL_20230414_102229927.jpg[alt]
+
+image::PXL_20230414_102558236.jpg   [alt]
+
+=== 11h45 - 12h30 : 6 Tips pour améliorer sa Web App Angular
+
+==== Abstract
+
+Si Angular est d’apparence plus simple à découvrir (merci les tutos Google), il est probablement plus complexe à maîtriser que ses comparses. Dans ce quickie, je vous propose 6 tips, du plus évident au plus caché, qui ont changé la donne dans le code de nos apps, que ce soit en termes de performances ou de lisibilité. Qu’importe votre niveau sur le sujet, je parie sur le fait qu’il y aura du nouveau pour tous !
+
+==== Speakers
+
+Rien ne présageait que Camille ferait du web. Plutôt destinée à une carrière dans les systèmes embarqués, c’est finalement le dev, qui l’a embarquée il y 2 ans. Sur le chemin, elle découvre son talent de leadership et se dit qu’au final, elle pourrait aussi emmener du monde avec elle dans sa quête de connaissance et de veille ! Adepte de meetups comme certains, fan de frameworks comme beaucoup, elle connaît TypeScript jusqu’au bout des ongles et prend parfois son clavier pour partager ce qui l’anime au quotidien.
+
+==== Notes
+
+Astuce 1 : les alias
+
+Astuce 2 : TrackBy
+
+=== 13h30 - 14h15 : Docker au service du DevSecOps
+
+==== Abstract
+
+Chez La Poste docker est devenu un élément clé de la démarche DevSecOps et de notre démarche Move To Cloud. Dans une entreprise comme La Poste, il est important d'automatiser, de sécuriser, de simplifier et de généraliser les process de déploiement afin de permettre des mises en production transparentes et résilientes pour nos facteurs et nos utilisateurs. Afin d'y parvenir, nous avons mis en place des boites à outils (catalogues d'images Docker, templates de pipelines CICD, checks de sécurité, etc.) afin de permettre aux équipes applicatives de déployer leurs applications sur le cloud avec le minimum d'effort. Nous utilisons docker à chaque étape que ça soit pour donner un cadre technique aux projets, mais aussi pour vérifier que les projets respectent les bonnes pratiques recommandées. C’est pourquoi pendant la présentation, je vais expliquer comment nous utilisons docker à La Poste pendant le développement (optimisation de cache, catalogue d'images), la sécurisation (scan des images, patch management, SAST, DAST) et le déploiement rapide et automatisé des applications (CI/CD). La présentation sera accompagnée d'exemples concrets d'implémentation.
+
+==== Speakers
+
+_Carmen Piciorus_
+
+Toujours passionnée par la tech, le dev et la sécurité, je suis toujours contente de partager mes connaissances et toujours en quête de perfectionnement et de l'épanouissement. Après 6 ans de missions en tant que développeur, j'ai rejoins le groupe La Poste en tant qu'abuse manager pour la messagerie laposte.net, et ensuite expert technique et sécurité (kubernetes, docker, gitlab-ci) pour la DSI BSCC.
+
+Par ailleurs je suis présidente de l’association Signal spam, engagée dans la lutte contre le spam.
+
+==== Notes
+
+Déploiement des applications dans le cloud de manière sécurisée
+
+Pour le développeur => utilisation d'un catalogue d'images interne et recommandé. Même principe que pour la création d'OS sécurisé chez nous. A partir d'une image officielle, on enlève ce qui n'est pas nécessaire (en collaboration avec chaque projet) et on scanne ce qui reste à la recherche de vulnérabilités et de failles de sécurité.
+
+Ecriture du dockerfile par les développeurs chez la Poste, diminution de la taille de l'image finale avec des builds multi-stage. Utilisation de docker-compose pour démarrer plusieurs images (back et front) en même temps. Buildpacks pour transformer le code en image Docker pour les projets legacy sans pipeline.
+
+Outils de détection de vulnérabilités : scan statique du code source avec SAST (Static application security testing) et SCA (scan des dépendances et des licenses avec dependency-check). Scan dynamique de l'application en exécution avec zap (owasp/zap2docker-bare). Scan du catalogue d'images et scan des images projet.
+
+Fuite de données => pas de secrets dans les configmap, ni dans les variables d'environnement de l'image.
+
+Base de connaissance ELK : état de santé des applications.
+
+=== 14h30 - 15h15 : 1, 2, 3 Quarkus!
+
+==== Abstract
+
+Quarkus est une stack pour écrire des applications Java pour le Cloud. En réduisant l’emprunte mémoire et le temps de démarrage, les applications Quarkus permettent en autre d’augmenter la densité de déploiement, le développement d’application serverless en Java, un meilleur comportement dans Kubernetes…
+
+La première release publique de Quarkus a été faite en Mars 2019. Nous voilà 4 ans plus tard avec Quarkus 3.x. Entre temps, Quarkus a grandi, son écosystème s’est enrichi. Mais, Quarkus est resté fidèle à ses principes.
+
+Cette présentation rappelle les points fondamentaux de Quarkus (build-time principle, reactive core, container-first) et explique leur évolution au cours de ces 4 dernières années ainsi que les nouveautés de Quarkus 3.x tels que la nouvelle dev ui, l’intégration d’Hibernate 6, le passage à Jakarta et à Flow, le support des threads virtuels, les différentes améliorations de l’expérience pour les développeurs, le support des architectures ARM…
+
+==== Speakers
+
+_Clement Escoffier_
+
+Clement Escoffier (@clementplop) is a distinguished engineer at Red Hat. He is a Java Champion, author, and also acts as a Reactive Architect at Red Hat. Before joining Red Hat, Clement had several professional lives, from academic positions to management. Clement has always been interested in software engineering, distributed systems, and event-driven architecture. He recently focused on Reactive Systems, Cloud-Native applications, and Kubernetes. Clement actively contributes to many open-source projects, such as Eclipse Vert.x, SmallRye, Mutiny, and Quarkus.
+
+_Aurea Munoz Hernandez_
+
+Développeuse java focalisée sur l'intégration de Spring Boot et Spring Cloud dans le portfolio Red Hat Middleware. Je contribue aux projets spring boot et spring cloud pour améliorer l'expérience développeur.
+
+==== Notes
+
+Slides de la présentation : https://www.slideshare.net/clement.escoffier/devoxx-france-2023-123-quarkuspdf
+
+Présentation des nouveautés de Quarkus 3 au travers d'une démo codée en live, très orientée Cloud, Kubernetes, Kafka
+
+mettre une capture d'écran
+
+=== 15h30 - 16h15 : L'étonnante efficacité des petits pas
+
+==== Abstract
+
+"Qui va lentement va surement !"
+
+Changement de spec, changement du code, perte de connaissance, changement de techno, changement d'équipe, changement du marché … Ecrire du code est complexe ! Dans un environement complexe, il faut avancer par petit pas. Coder par petit pas, c'est découper les taches de développement en petits incréments.
+
+Assistez à ce talk pour comprendre pourquoi coder en petits pas est LA pratique que vous devriez apprendre MAINTENANT ! En plus :
+
+* Vous partagerez vos histoires de développement par petit pas.
+* Vous entendrez comment je suis tombé dans la marmite des petits pas !
+* Vous découvrirez comment les petits pas impactent d'innombrables aspects de notre travail : Test, Commit, Qualité, Risque, CI, CD, Priorisation, Rythme, Fatigue, Travail en équipe, Suivi du travail, Legacy, et Refactoring ...!
+* Vous comprendrez pourquoi les petits pas sont importants grâce à la théorie Cynefin.
+* Vous apprendrez comment prendre des petits pas, même dans un environement difficile !
+* Vous poserez un premier pied sur le chemin des pas toujours plus petits.
+Venez (re-)découvrir la compétence la plus sous-estimée du développement !
+
+==== Speakers
+
+_Philippe Bourgau_
+
+Coach eXtreme Programming et Hacktivist du rythme soutenable !
+
+La vie est trop courte pour perdre son temps! J'aide les développeurs à atteindre un rythme soutenable et une productivité durable grâce au refactoring continu de leur code, mais aussi de leur environnement de travail !
+
+Je travaille actuellement à Murex
+
+==== Notes
+
+Amélioration progressive, tout marche toujours, mais il faut une bonne couverture de code. Petits commits, facilite le travail collaboratif, les merges sont simplifiés.
+
+TCR : test and commit, or reverse
+
+https://blog.cleancoder.com/uncle-bob/2013/05/27/TheTransformationPriorityPremise.html
+
+https://github.com/murex/TCR
+
+=== 16h45 - 17h30 : Quoi de neuf dans CDI 4.0 ?
+
+==== Abstract
+
+Jakarta Contexts and Dependency Injection est probablement la spécifications la plus sous-estimée de Jakarta EE. Et pourtant, elle constitue la pierre angulaire de Jakarta EE et de MicroProfile en fournissant un modèle de programmation standardisé et une manière puissante d'intégrer des technologie tierces de manière transparente.
+
+La version 4 de CDI est au cœur de Jakarta EE 10 et MicroProfile 6.0 qui sont sorties fin 2022. Il parait donc intéressant d’explorer les nouveautés de la spécification pour voir ce qu’elle apporte à ces 2 stacks
+
+Dans cette présentation, nous passerons donc, en revue toutes les nouvelles fonctionnalités de la spécification et nous nous concentrerons sur CDI lite qui a permis de créer un nouveau profil Jakarta EE (le Core Profile) et prend en charge les approches d’injection de dépendance au build time comme le font Quarkus ou Micronaut.
+
+Nous passerons en revue la nouvelle API d'extension et verrons comment elle diffère des Portable Extensions historiques.
+
+A l’issue de ce talk vous serez en mesure de commencer le développement d’une extension CDI Lite pour votre framework préféré pour vous préparer aux futures versions de Quarkus et Micronaut.
+
+==== Speakers
+
+_Antoine Sabot-Durand_
+
+Antoine est un Java Champion et l’ancien spec lead de Jakarta EE CDI. Il a fait partie de l’équipe de lancement de Quarkus chez Red Hat et à travaillé sur des specs MicroProfile majeures comme Fault Tolerance ou Health Check. Aujourd’hui, Antoine est architecte et expert technique chez SCIAM. Il pilote des projets complexes en utilisant en grande partie les technologies qu’il a contribué à mette au point.
+
+==== Notes
+
+Dans CDI 4.0, par défaut, seul les beans annotés sont trouvés.
+
+CDI Lite : empreinte mémoire beaucoup plus légère pour les environnement contraints et le cloud. Le but est de fournir un sous ensemble CDI le plus grand possible pour que les fonctionnalités fondamentales de CDI puissent fonctionner. Les premiers cibles de CDI Lite sont Quarkus et Micronaut.
+
+Ce qui n'est pas dans CDI Lite : 
+* Les Decorators
+* @Session et @Conversation
+* les standard Portable extension
+
+Quarkus 3 va utiliser CDI 4.0 à travers ArcDI, et les extensions propriétaires devront être mise à jour.
 
 ===== A rattraper en replay
 
@@ -566,8 +782,13 @@ Cloud native buildpacks (CNB) : convertit le code source depuis n'importe quel l
 * Finis les 'git commit -m "fix pipeline #42"' grâce à Dagger (+)
 * Playwright : l'outil qui va révolutionner les tests end-to-end (++)
 * Redis: du cache à la time series! (+)
-* Savez-vous vraiment comment fonctionne git ? (++)
+* Savez-vous vraiment comment fonctionne git ? (+++)
 * Ah, tu peux faire ça en CSS maintenant ? (+)
 * GC: Comment dompter la bête et en faire votre meilleur allié (++)
+* Programmation Concurrente et Asynchrone : Loom en Java 20 et 21 (++)
+* Je malmène ta prod en direct avec 15 failles de sécu (++)
+* Voyage au centre de la Veille : Apprendre en continu avec sa veille technologique (+)
 
-A regarder : Decathlon, Blablacar, cosium, Axa, Takima
+A regarder : Decathlon, Blablacar, cosium, Axa, Takima, github, sonar
+
+https://www.npmjs.com/package/eslint-plugin-rxjs-angular
