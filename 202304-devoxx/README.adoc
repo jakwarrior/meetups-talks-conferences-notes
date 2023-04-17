@@ -35,6 +35,16 @@ endif::[]
 
 toc::[]
 
+== Résumé des 3 jours
+
+Voici un résumé à chaud après les 3 jours du salon. Dans l'ensemble, les conférences étaient très intéressantes. On retrouve beaucoup de conférences autour du thème de l'IA depuis la sortie de ChatGPT, et autour du DevOps (DevOps, DevSecOps, Docker, Kubernetes et même GitOps qui est une évolution du DevOps). Pas mal de conférences aussi sur les nouveautés de l'écosystème Java et Djakarta avec les évolutions liées à Java 19 et 20. Java continue donc son évolution tranquillement mais il continue d'être très utilisé aujourd'hui. Par contre, on parle uniquement de Java "backend", je n'ai pas du tout entendu parler pendant ces 3 jours de JavaFx, et encore moins de Swing. Il y a peu de chance de voir des évolutions du côté du JavaFx dans les années à venir.
+
+J'ai également rencontré des ingénieurs de Microsoft, Red Hat, Github, CloudBees (Jenkins), Sonar sur les différents stands, pour échanger autour des outils et des bonnes pratiques. Au niveau des bonnes pratiques, je pense qu'elles sont assez bien appliquées dans le service. Nous avons une intégration continue sur la plupart des projets, avec des outils de Clean Code comme Sonar ou ESLint. Le point où nous pouvons beaucoup nous améliorer est sur la couverture de code. Sonar recommande d'avoir 80% de couverture de code sur les projets, et utilise 90% de couverture de code sur ses propres projets. Nous en sommes loin sur nos projets et nous ne pouvons que nous améliorer sur ce point-là. Il faut avoir le plus possible de tests unitaires et de tests end-to-end pour détecter les problèmes au plus tôt.
+
+Par contre, après ces derniers jours, mon ressenti est que l'entreprise a pris beaucoup de retard au niveau des outils utilisés. Actuellement, tous les outils et les pratiques de CI/CD tournent autour de Git et de Docker. Sur tous les stands, mes interlocuteurs étaient systématiquement surpris dès que je disais que nous n'utilisons pas Git comme outil de versioning, ni Docker sur nos postes de développement ou dans nos pipelines d'intégration continue. Le système mis en place chez AAAA pour utiliser Docker est trop limité et trop complexe à utiliser pour qu'il soit intéressant. Git et Docker nous apporteraient plus de souplesse et de rapidité dans nos développements et nos phases de tests. Ces deux outils sont aujourd'hui la norme dans toutes les entreprises technologiques et ne peuvent être qu'un atout pour AAAA. Par exemple, ces outils sont déjà utilisés chez Thales, notamment le trio Git/Docker/Kubernetes qui sont la base de tout projet moderne. Il est donc possible de les utiliser dans des environnements sécurisés comme le notre. Sans ces outils, AAAA se révèle moins intéressant sur le marché du travail (les nouveaux embauchés s'attendent à pouvoir utiliser ces outils) et est en retard technologique par rapport à ses concurrents.
+
+Concernant les solutions possibles, pour avoir également discuté avec un ingénieur de chez Github, il est possible d'héberger en interne un serveur GitHub Entreprise (ou son concurrent Gitlab). GitHub peut fournir un support pour rajouter des extensions dédiées à la spécification ou aux tests pour avoir un équivalent à la suite ALM et son trio RTC/RQM/DNG (sachant qu'il est déjà possible de remplacer RTC par Git dans la suite ALM). Si nous avons absolument besoin d'un support pour Kubernetes, Red Hat fournit sa suite OpenShift qu'il est possible d'héberger directement sur notre site. Nous avons besoin de rapidement trouver une solution sur ces problématiques si nous ne voulons pas être distancés par tous nos concurrents.
+
 == Présentation du salon
 
 * https://www.devoxx.fr/, du 12 au 14/04/2022
@@ -61,7 +71,7 @@ Arnaud est développeur, coach craft et formateur chez Arolla. Passionné par la
 
 ==== Notes
 
-Le DDD pour « Domain-Driven Design » est appelé en français « Conception pilotée par le domaine ».
+Rappel sur le sujet : le DDD pour « Domain-Driven Design » est appelé en français « Conception pilotée par le domaine ».
 (À la place de « pilotée par le domaine », on pourrait utiliser orientée, motivée, justifiée…)
 La conception de notre application toute entière est définie sur le design du domaine.
 En quelques mots, il s’agit de représenter le métier directement dans le code. Plutôt que de coder le métier.
@@ -468,9 +478,9 @@ image::PXL_20230413_134745523.jpg[alt]
 
 La prochaine étape du Devops : uniquement des machines à partir du commit du développeur (code review, review des vulnérabilités, end-to-end testing, ...). Le speaker aimerait que la chaine de prod soient entièrement automatisée pour que la mise en prod soit la plus rapide possible. 
 
-Mettre à jour Edge device
+Mettre à jour avec image Edge device
 
-Bref, le devops n'est pas mort, et on gagnerait beaucoup de temps à automatiser le maximum d'étapes avant la mise en prod
+Bref, le devops n'est pas mort, et on gagnerait beaucoup de temps à automatiser le maximum d'étapes avant la mise en prod (à relativiser aussi vu que le speaker est PDG d'une entreprise qui fournit ce genre de service, c'est son business et il ne va pas dire le contraire) 
 
 === 16h45 - 17h30 : Auth et systèmes distribués: ne jetons pas le bébé avec l'eau du bain
 
@@ -700,7 +710,13 @@ Slides de la présentation : https://www.slideshare.net/clement.escoffier/devoxx
 
 Présentation des nouveautés de Quarkus 3 au travers d'une démo codée en live, très orientée Cloud, Kubernetes, Kafka
 
-mettre une capture d'écran
+image::quarkus1.png[alt]
+
+image::quarkus2.png[alt]
+
+image::quarkus3.png[alt]
+
+image::quarkus4.png[alt]
 
 === 15h30 - 16h15 : L'étonnante efficacité des petits pas
 
@@ -788,7 +804,3 @@ Quarkus 3 va utiliser CDI 4.0 à travers ArcDI, et les extensions propriétaires
 * Programmation Concurrente et Asynchrone : Loom en Java 20 et 21 (++)
 * Je malmène ta prod en direct avec 15 failles de sécu (++)
 * Voyage au centre de la Veille : Apprendre en continu avec sa veille technologique (+)
-
-A regarder : Decathlon, Blablacar, cosium, Axa, Takima, github, sonar
-
-https://www.npmjs.com/package/eslint-plugin-rxjs-angular
